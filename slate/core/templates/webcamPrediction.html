@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webcam Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/vision_bundle.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+</head>
+<body>
+    {% csrf_token %}
+    <script type="module" src="{% static 'scripts/handLandmarker.js' %}"></script>
+
+    <div>
+        <h2>The Letter Chosen: letter_chosen </h2>
+    </div>
+
+    <section id="demos" class="invisible">
+        <div id="liveView" class="videoView">
+            <button id="webcamButton"> ENABLE WEBCAM </button>
+            <div style="position: relative;">
+                <video id="webcam" style="position: absolute;" autoplay playsinline></video>
+                <canvas id="output_canvas" class="output_canvas" style="position: absolute; left: 0; top: 0;"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div class="outputText">
+        <button class="outputButton" id="outputButton"> LOG RESULTS</button>
+        <p id="outputText">Output: </p>
+    </div>
+
+</body>
+</html>
